@@ -17,7 +17,7 @@ class AuthServices {
     try {
       http.Response response = await http.post(
         Uri.parse("$baseURL/users/register"),
-          headers: {'Content-Type': 'application/json'},
+        headers: {'Content-Type': 'application/json'},
         body: jsonEncode({'name': name, 'email': email, 'password': password}),
       );
 
