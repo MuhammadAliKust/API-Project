@@ -5,6 +5,8 @@ import 'package:api_project/models/taskListing.dart';
 import 'package:http/http.dart' as http;
 
 class TaskServices{
+  String baseURL = "https://todo-nu-plum-19.vercel.app/";
+
   ///Create Task
   Future<TaskModel> createTask({
     required String description,
@@ -12,7 +14,7 @@ class TaskServices{
   }) async {
     try {
       http.Response response = await http.post(
-        Uri.parse("{{TODO_URL}}/todos/add"),
+        Uri.parse("$baseURL/todos/add"),
         headers: {'Content-Type': 'application/json',
           'Authorization': token},
         body: jsonEncode({'description': description,}),
@@ -33,7 +35,7 @@ class TaskServices{
   }) async {
     try {
       http.Response response = await http.get(
-        Uri.parse("{{TODO_URL}}/todos/get"),
+        Uri.parse("$baseURL/todos/get"),
         headers: {'Authorization': token},
       );
 
@@ -54,7 +56,7 @@ class TaskServices{
   }) async {
     try {
       http.Response response = await http.patch(
-        Uri.parse("{{TODO_URL}}/todos/update/$taskID"),
+        Uri.parse("$baseURL/todos/update/$taskID"),
         headers: {'Authorization': token,'Content-Type': 'application/json'},
         body: jsonEncode({'description': description,}),
       );
@@ -75,7 +77,7 @@ class TaskServices{
   }) async {
     try {
       http.Response response = await http.delete(
-        Uri.parse("{{TODO_URL}}/todos/delete/$taskID"),
+        Uri.parse("$baseURL/todos/delete/$taskID"),
         headers: {'Authorization': token},
       );
 
@@ -94,7 +96,7 @@ class TaskServices{
   }) async {
     try {
       http.Response response = await http.get(
-        Uri.parse("{{TODO_URL}}/todos/complete"),
+        Uri.parse("$baseURL/todos/complete"),
         headers: {'Authorization': token},
       );
 
@@ -113,7 +115,7 @@ class TaskServices{
   }) async {
     try {
       http.Response response = await http.get(
-        Uri.parse("{{TODO_URL}}/todos/incomplete"),
+        Uri.parse("$baseURL/todos/incomplete"),
         headers: {'Authorization': token},
       );
 
@@ -132,7 +134,7 @@ class TaskServices{
   }) async {
     try {
       http.Response response = await http.get(
-        Uri.parse("{{TODO_URL}}/todos/filter?startDate=$startDate&endDate=$endDate"),
+        Uri.parse("$baseURL/todos/filter?startDate=$startDate&endDate=$endDate"),
         headers: {'Authorization': token},
       );
 
