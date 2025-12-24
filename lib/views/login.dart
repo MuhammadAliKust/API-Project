@@ -1,5 +1,6 @@
 import 'package:api_project/providers/user__token_provider.dart';
 import 'package:api_project/services/auth.dart';
+import 'package:api_project/views/get_all_task.dart';
 import 'package:api_project/views/profile.dart';
 import 'package:api_project/views/register.dart';
 import 'package:flutter/material.dart';
@@ -44,7 +45,7 @@ class _LoginState extends State<Login> {
                                   content: Text("${userDate.user!.name.toString()} Logged in Successfully"),
                                   actions: [
                                     TextButton(onPressed: (){
-                                      Navigator.push(context, MaterialPageRoute(builder: (context)=> Profile()));
+                                      Navigator.push(context, MaterialPageRoute(builder: (context)=> GetAllTask()));
                                     }, child: Text("Okay"))
                                   ],
                                 );
